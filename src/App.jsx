@@ -1,6 +1,10 @@
-import { DemonstratingProps } from "./components/demo/DemonstratingProps";
+import { englishWords, russianWords } from "./components/LanguageData";
+import React from 'react'
 
 function App() {
+
+    const[count, setCount] = React.useState(1)
+
     return (
         <div>
             <h1>Language Practice - Counting</h1>
@@ -13,8 +17,8 @@ function App() {
                 <button>Random (Russian)</button>
             </div>
             <div className="numbers">
-                <h2>Eng.Num</h2>
-                <h2>Rus.Num</h2>
+                <h2>{englishWords[count]}</h2>
+                <h2>{russianWords[count]}</h2>
             </div>
         </div>
     );
