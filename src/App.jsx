@@ -3,6 +3,8 @@ import React from "react";
 
 function App() {
     const [count, setCount] = React.useState(1);
+    const [showEnglish, setShowEnglish] = React.useState(true)
+    const [showRussian, setShowRussian] = React.useState(true)
 
     function prevNumber() {
         if (count >= 1) {
@@ -16,20 +18,28 @@ function App() {
         }
     }
 
+    function toggleShowEnglish() {
+        setShowEnglish((prevValue) => !prevValue)
+    }
+
+    function toggleShowRussian() {
+        setShowRussian((prevValue) => !prevValue)
+    }
+
     return (
         <div>
             <h1>Language Practice - Counting</h1>
             <div className="buttons">
                 <button onClick={prevNumber}>⬅️</button>
                 <button onClick={nextNumber}>➡️</button>
-                <button>Show/hide English</button>
-                <button>Show/hide Russian</button>
+                <button onClick={toggleShowEnglish} >Show/hide English</button>
+                <button onClick={toggleShowRussian} >Show/hide Russian</button>
                 <button>Random (English)</button>
                 <button>Random (Russian)</button>
             </div>
             <div className="numbers">
-                <h2>{englishWords[count]}</h2>
-                <h2>{russianWords[count]}</h2>
+                <h2>{showEnglish ? englishWords[count]: '?'}</h2>
+                <h2>{showRussian ? russianWords[count]: '?'}</h2>
             </div>
         </div>
     );
